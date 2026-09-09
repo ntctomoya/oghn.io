@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【氏名】｜研究者プロフィール</title>
+<meta name="description" content="【氏名】（【所属】）の研究者プロフィール。研究テーマ・経歴・業績・連絡先。">
+
+<!-- OGP（SNS・チャットでの共有時の見え方） -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="【氏名】｜研究者プロフィール">
+<meta property="og:description" content="【所属】／【研究分野】。研究テーマ・経歴・業績・連絡先。">
+<!-- <meta property="og:image" content="https://example.github.io/ogp.jpg"> -->
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f7f9;
+    --border:#e3e6ea;
+    --text:#1c2126;
+    --muted:#5c6670;
+    --accent:#1f5f8b;
+    --accent-soft:#e8f0f6;
+    --radius:14px;
+    --maxw:640px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#14171a;
+      --surface:#1c2024;
+      --border:#2c3238;
+      --text:#e8eaed;
+      --muted:#9aa4ad;
+      --accent:#6db3de;
+      --accent-soft:#1e2c36;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-text-size-adjust:100%;
+  }
+  a{color:var(--accent);}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:40px 20px 28px;
+    text-align:center;
+    background:linear-gradient(180deg,var(--accent-soft),transparent);
+  }
+  .hero-inner{max-width:var(--maxw);margin:0 auto;}
+  .photo{
+    width:132px;height:132px;border-radius:50%;
+    object-fit:cover;border:3px solid var(--bg);
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+    background:var(--surface);
+    margin-bottom:16px;
+  }
+  .hero h1{font-size:1.6rem;margin:0 0 4px;letter-spacing:.02em;}
+  .hero .reading{font-size:.85rem;color:var(--muted);margin:0 0 12px;letter-spacing:.08em;}
+  .hero .affil{font-size:.95rem;margin:0 0 2px;}
+  .hero .field{
+    display:inline-block;margin-top:10px;padding:4px 12px;
+    background:var(--accent-soft);color:var(--accent);
+    border-radius:999px;font-size:.82rem;font-weight:600;
+  }
+  .hero .tagline{margin:16px auto 0;max-width:34em;color:var(--muted);font-size:.95rem;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav ul{
+    max-width:var(--maxw);margin:0 auto;padding:8px 8px;
+    list-style:none;display:flex;gap:4px;overflow-x:auto;
+    scrollbar-width:none;
+  }
+  nav ul::-webkit-scrollbar{display:none;}
+  nav a{
+    display:block;padding:8px 12px;white-space:nowrap;
+    font-size:.78rem;font-weight:700;letter-spacing:.06em;
+    text-decoration:none;color:var(--muted);border-radius:8px;
+  }
+  nav a:hover{background:var(--surface);color:var(--text);}
+
+  /* ---------- Sections ---------- */
+  section{padding:36px 0 8px;scroll-margin-top:56px;}
+  section h2{
+    font-size:1.15rem;margin:0 0 4px;
+    display:flex;align-items:baseline;gap:10px;
+  }
+  section h2 .en{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.14em;}
+  section > .wrap > p:first-of-type{margin-top:14px;}
+  .divider{height:1px;background:var(--border);margin:28px 0 0;}
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:16px 18px;margin:14px 0;
+  }
+  .card h3{margin:0 0 6px;font-size:1rem;}
+  .card p{margin:0;color:var(--muted);font-size:.92rem;}
+  .muted{color:var(--muted);}
+  .small{font-size:.86rem;}
+
+  /* ---------- Timeline (CAREER) ---------- */
+  .timeline{margin:16px 0 0;padding:0;list-style:none;}
+  .timeline li{
+    position:relative;padding:0 0 20px 22px;border-left:2px solid var(--border);
+  }
+  .timeline li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .timeline li::before{
+    content:"";position:absolute;left:-7px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--accent);border:2px solid var(--bg);
+  }
+  .timeline .year{font-size:.8rem;font-weight:700;color:var(--accent);}
+  .timeline .role{font-weight:600;margin:2px 0;}
+  .timeline .note{font-size:.88rem;color:var(--muted);}
+
+  /* ---------- Achievements ---------- */
+  .ach-group{margin:18px 0 0;}
+  .ach-group h3{
+    font-size:.82rem;letter-spacing:.1em;color:var(--accent);
+    border-bottom:1px solid var(--border);padding-bottom:6px;margin:0 0 10px;
+  }
+  .ach-group ol{margin:0;padding-left:1.2em;}
+  .ach-group li{margin:0 0 10px;font-size:.92rem;}
+  .ach-group li .meta{color:var(--muted);font-size:.85rem;}
+
+  /* ---------- Links ---------- */
+  .links{display:flex;flex-direction:column;gap:10px;margin:16px 0 0;}
+  .links a{
+    display:flex;align-items:center;gap:12px;
+    padding:14px 16px;background:var(--surface);
+    border:1px solid var(--border);border-radius:var(--radius);
+    text-decoration:none;color:var(--text);font-weight:600;font-size:.95rem;
+  }
+  .links a:hover{border-color:var(--accent);}
+  .links a .ico{width:22px;text-align:center;flex:none;}
+  .links a .arrow{margin-left:auto;color:var(--muted);}
+
+  footer{
+    text-align:center;padding:32px 20px 40px;
+    color:var(--muted);font-size:.8rem;
+  }
+
+  ul.plain{padding-left:1.2em;}
+  ul.plain li{margin:6px 0;}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO / PROFILE ============ -->
+<header class="hero" id="profile">
+  <div class="hero-inner">
+    <img class="photo" src="photo.jpg" alt="【氏名】の顔写真"
+         onerror="this.style.visibility='hidden'">
+    <h1>【氏名】</h1>
+    <p class="reading">【なまえ / Name in Romaji】</p>
+    <p class="affil">【所属大学・研究科】</p>
+    <p class="affil muted small">【研究室名】／【職位・学年（例：博士後期課程2年）】</p>
+    <span class="field">【研究分野（例：分子生物学）】</span>
+    <p class="tagline">【一言プロフィール。自分が何を目指してどんな研究をしているかを1〜2文で。】</p>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <ul>
+    <li><a href="#profile">PROFILE</a></li>
+    <li><a href="#research">RESEARCH</a></li>
+    <li><a href="#career">CAREER</a></li>
+    <li><a href="#achievements">ACHIEVEMENTS</a></li>
+    <li><a href="#message">MESSAGE</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#links">LINKS</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research">
+  <div class="wrap">
+    <h2>研究 <span class="en">RESEARCH</span></h2>
+
+    <div class="card">
+      <h3>現在の研究テーマ</h3>
+      <p>【研究テーマのタイトル】</p>
+    </div>
+
+    <p><strong>研究対象</strong><br>
+      <span class="muted">【何を対象にしているか（生物種・現象・材料・データなど）】</span></p>
+
+    <p><strong>研究内容</strong><br>
+      <span class="muted">【専門外の研究者が読んでも大まかに分かる説明を3〜5文で。背景 → 問い → アプローチ → 何が分かると嬉しいか。】</span></p>
+
+    <p><strong>今後興味のあるテーマ</strong></p>
+    <ul class="plain muted">
+      <li>【今後やってみたい研究・発展の方向性 ①】</li>
+      <li>【② 】</li>
+    </ul>
+
+    <p class="small"><a href="#">学会ポスター／発表資料を見る（PDF）</a>
+      <span class="muted">※ 公開できるものがあれば</span></p>
+  </div>
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<!-- ============ CAREER ============ -->
+<section id="career">
+  <div class="wrap">
+    <h2>経歴 <span class="en">CAREER</span></h2>
+    <ul class="timeline">
+      <li>
+        <div class="year">【20XX】</div>
+        <div class="role">【◯◯高等学校 卒業】</div>
+        <div class="note">【必要なら一言】</div>
+      </li>
+      <li>
+        <div class="year">【20XX】</div>
+        <div class="role">【◯◯大学 ◯◯学部 ◯◯学科 卒業】</div>
+        <div class="note">【専攻・卒業研究テーマなど】</div>
+      </li>
+      <li>
+        <div class="year">【20XX】</div>
+        <div class="role">【◯◯大学大学院 ◯◯研究科 修士課程 修了】</div>
+        <div class="note">【研究内容】</div>
+      </li>
+      <li>
+        <div class="year">【20XX–現在】</div>
+        <div class="role">【◯◯大学大学院 ◯◯研究科 博士後期課程】</div>
+        <div class="note">【◯◯研究室／指導教員：◯◯先生】</div>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section id="achievements">
+  <div class="wrap">
+    <h2>業績 <span class="en">ACHIEVEMENTS</span></h2>
+
+    <div class="ach-group">
+      <h3>論文 / PUBLICATIONS</h3>
+      <ol>
+        <li>
+          【著者名（自分を含む全員）】.
+          「【論文タイトル】」.
+          <span class="meta">【掲載誌名】, 【巻(号)】, 【ページ】, 【年】. DOI: 【10.xxxx/xxxxx】</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ach-group">
+      <h3>学会発表 / PRESENTATIONS</h3>
+      <ol>
+        <li>
+          【発表者名】.
+          「【発表タイトル】」.
+          <span class="meta">【学会名】, 【開催地】, 【年月】.（口頭／ポスター）</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ach-group">
+      <h3>その他 / OTHERS</h3>
+      <ul class="plain">
+        <li class="small">【受賞歴：◯◯賞（20XX）】</li>
+        <li class="small">【著書・分担執筆：書名, 出版社, 担当章, 年】</li>
+        <li class="small">【競争的資金・フェローシップなど】</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<!-- ============ MESSAGE ============ -->
+<section id="message">
+  <div class="wrap">
+    <h2>これから <span class="en">MESSAGE</span></h2>
+    <p class="muted">
+      【研究者としての意気込みを短く。
+      ・現在の研究を通じて何を明らかにしたいか
+      ・今後どんな研究をしていきたいか
+      ・どんな研究者を目指しているか
+      を3〜5文で。】
+    </p>
+  </div>
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <h2>人となり <span class="en">ABOUT</span></h2>
+    <div class="card">
+      <p class="muted">
+        趣味：【　】<br>
+        好きな動物：【　】<br>
+        ペット：【　】<br>
+        最近はまっていること：【　】
+      </p>
+    </div>
+    <p class="small muted">【会話のきっかけになりそうな一言。学会で話しかけやすくなる程度に。】</p>
+  </div>
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<!-- ============ LINKS ============ -->
+<section id="links">
+  <div class="wrap">
+    <h2>リンク <span class="en">LINKS</span></h2>
+    <div class="links">
+      <a href="mailto:【address@example.ac.jp】"><span class="ico">✉️</span>Email<span class="arrow">→</span></a>
+      <a href="【https://lab.example.ac.jp】" target="_blank" rel="noopener"><span class="ico">🏛️</span>所属研究室ページ<span class="arrow">→</span></a>
+      <a href="【https://researchmap.jp/【id】】" target="_blank" rel="noopener"><span class="ico">🗂️</span>researchmap<span class="arrow">→</span></a>
+      <a href="【https://scholar.google.com/citations?user=【id】】" target="_blank" rel="noopener"><span class="ico">🎓</span>Google Scholar<span class="arrow">→</span></a>
+      <a href="【https://orcid.org/0000-0000-0000-0000】" target="_blank" rel="noopener"><span class="ico">🆔</span>ORCID<span class="arrow">→</span></a>
+      <a href="【https://x.com/【id】】" target="_blank" rel="noopener"><span class="ico">𝕏</span>X (Twitter)<span class="arrow">→</span></a>
+    </div>
+    <p class="small muted" style="margin-top:14px;">※ 実在するアカウントのみ残し、不要な行は削除してください。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> 【氏名】 &nbsp;·&nbsp; Last updated: 【2026-09】
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 現在地セクションをナビでハイライト
+  const links = [...document.querySelectorAll('nav a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.style.color='');
+        const active = map.get(e.target.id);
+        if(active) active.style.color = 'var(--text)';
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
