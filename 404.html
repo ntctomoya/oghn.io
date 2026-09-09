@@ -36,12 +36,12 @@
   .code{font-family:var(--serif);font-weight:700;letter-spacing:.3em;color:var(--border);font-size:1rem;margin:0 0 22px;}
   h1{font-weight:700;color:var(--ink);font-size:1.35rem;letter-spacing:.08em;margin:0 0 14px;}
   p{font-family:var(--hand);color:var(--muted);font-size:1rem;max-width:22em;margin:0 auto 30px;}
-  a.home{
-    display:inline-block;text-decoration:none;
+  .home{
+    display:inline-block;text-decoration:none;border:none;cursor:pointer;
     font-family:var(--serif);font-weight:700;letter-spacing:.16em;font-size:.9rem;
     color:#fff;background:var(--ink);padding:13px 30px;border-radius:999px;
   }
-  a.home:active{opacity:.85;}
+  .home:active{opacity:.85;}
 </style>
 </head>
 <body>
@@ -50,11 +50,18 @@
   <p class="script">Coming soon</p>
   <p class="code">UNDER CONSTRUCTION</p>
   <h1>このページは準備中です</h1>
-  <p>お探しの情報はただいま準備しています。<br>お手数ですがトップページからご覧ください。</p>
-  <!-- ↓ 公開先に合わせて絶対パスに変更。
-       ・username.github.io（ユーザーページ）→ href="/"
-       ・username.github.io/repo/（プロジェクトページ）→ href="/repo/" -->
-  <a class="home" href="/">▸ TOP へもどる</a>
+  <p>お探しの情報はただいま準備しています。<br>このタブを閉じてお戻りください。</p>
+  <button class="home" type="button" onclick="window.close()">▸ このタブを閉じる</button>
+  <p id="fallback" hidden style="font-size:.82rem;margin-top:14px;">
+    閉じられない場合は、ブラウザのタブを手動で閉じてください。
+  </p>
+  <script>
+    // window.close() はスクリプト/リンクで開かれたタブのみ有効。
+    // 閉じられなかった場合に案内を表示。
+    document.querySelector('button.home').addEventListener('click', function(){
+      setTimeout(function(){ document.getElementById('fallback').hidden = false; }, 300);
+    });
+  </script>
 
   <div class="tape bottom"></div>
 </body>
