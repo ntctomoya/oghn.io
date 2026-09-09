@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>準備中｜【氏名】</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Parisienne&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffff;--paper:#fbfaf6;--border:#e9e4d8;
+    --ink:#1c3a5e;--text:#3a3f45;--muted:#7b8189;--teal:#3f9d9b;--green:#7fa84f;
+    --serif:"Cormorant Garamond",serif;
+    --script:"Parisienne",cursive;
+    --jp:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    --hand:"Zen Kurenaido","Zen Kaku Gothic New",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(120% 80% at 50% 0%,var(--paper),#fff 70%);
+    color:var(--text);font-family:var(--jp);line-height:1.9;
+    text-align:center;padding:40px 24px;
+  }
+  .tape{
+    position:fixed;left:0;right:0;height:12px;
+    background:repeating-linear-gradient(90deg,var(--green) 0 10px,transparent 10px 20px),var(--teal);
+    opacity:.8;
+  }
+  .tape.top{top:0;} .tape.bottom{bottom:0;}
+  .script{font-family:var(--script);font-size:2.1rem;color:var(--teal);margin:0 0 6px;line-height:1;}
+  .code{font-family:var(--serif);font-weight:700;letter-spacing:.3em;color:var(--border);font-size:1rem;margin:0 0 22px;}
+  h1{font-weight:700;color:var(--ink);font-size:1.35rem;letter-spacing:.08em;margin:0 0 14px;}
+  p{font-family:var(--hand);color:var(--muted);font-size:1rem;max-width:22em;margin:0 auto 30px;}
+  a.home{
+    display:inline-block;text-decoration:none;
+    font-family:var(--serif);font-weight:700;letter-spacing:.16em;font-size:.9rem;
+    color:#fff;background:var(--ink);padding:13px 30px;border-radius:999px;
+  }
+  a.home:active{opacity:.85;}
+</style>
+</head>
+<body>
+  <div class="tape top"></div>
+
+  <p class="script">Coming soon</p>
+  <p class="code">UNDER CONSTRUCTION</p>
+  <h1>このページは準備中です</h1>
+  <p>お探しの情報はただいま準備しています。<br>お手数ですがトップページからご覧ください。</p>
+  <a class="home" href="./">▸ TOP へもどる</a>
+
+  <div class="tape bottom"></div>
+</body>
+</html>
