@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>【氏名】｜研究者プロフィール</title>
-<meta name="description" content="【氏名】（【所属】）の研究者プロフィール。研究テーマ・経歴・業績・連絡先。">
+<title>緒方 穂波｜研究者プロフィール</title>
+<meta name="description" content="緒方穂波（宮崎大学 医学獣医学総合研究科 博士課程）の研究者プロフィール。齧歯類の超音波発声の役割や種差に関する研究、経歴、業績。">
 
 <meta property="og:type" content="profile">
-<meta property="og:title" content="【氏名】｜研究者プロフィール">
-<meta property="og:description" content="【所属】／【研究分野】。研究テーマ・経歴・業績・連絡先。">
-<!-- <meta property="og:image" content="https://example.github.io/ogp.jpg"> -->
+<meta property="og:title" content="緒方 穂波｜研究者プロフィール">
+<meta property="og:description" content="宮崎大学 医学獣医学総合研究科 博士課程／実験動物学・動物行動学。齧歯類の超音波発声を切り口に研究しています。">
+<!-- TODO: OGP画像を用意したら ogp.jpg を配置してコメント解除
+<meta property="og:image" content="https://example.github.io/ogp.jpg"> -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +60,6 @@
     background:repeating-linear-gradient(90deg,
       var(--green) 0 10px, transparent 10px 20px),
       linear-gradient(var(--teal),var(--teal));
-    background-blend-mode:normal;
     opacity:.85;
   }
   .tape.thin{height:8px;opacity:.55;}
@@ -69,21 +69,16 @@
     position:relative;
     padding:56px 22px 44px;
     text-align:center;
-    background:
-      radial-gradient(120% 90% at 50% 0%, var(--paper) 0%, #ffffff 70%);
+    background:radial-gradient(120% 90% at 50% 0%, var(--paper) 0%, #ffffff 70%);
     overflow:hidden;
   }
   .hero .kicker{
-    font-family:var(--script);
-    font-size:1.9rem;
-    color:var(--teal);
-    line-height:1;
-    margin:0 0 18px;
+    font-family:var(--script);font-size:1.9rem;color:var(--teal);
+    line-height:1;margin:0 0 18px;
   }
   .photo-frame{
     width:150px;height:150px;margin:0 auto 20px;
-    border-radius:50%;
-    padding:6px;
+    border-radius:50%;padding:6px;
     background:conic-gradient(from 210deg,var(--teal),var(--green),var(--coral),var(--teal));
   }
   .photo-frame img{
@@ -143,11 +138,9 @@
     font-family:var(--serif);font-weight:700;
     font-size:1.15rem;letter-spacing:.22em;
     padding:11px 30px;margin:0 18px;
-    clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
   }
   .ribbon::before,.ribbon::after{
-    content:"";position:absolute;top:0;width:18px;height:100%;
-    background:var(--ink);
+    content:"";position:absolute;top:0;width:18px;height:100%;background:var(--ink);
   }
   .ribbon::before{left:-14px;clip-path:polygon(0 50%,100% 0,100% 100%);}
   .ribbon::after{right:-14px;clip-path:polygon(0 0,100% 50%,0 100%);}
@@ -160,11 +153,11 @@
   .lead{font-family:var(--hand);font-size:1.05rem;color:var(--ink);line-height:1.85;margin:0 0 18px;}
   .label{
     display:inline-block;font-family:var(--serif);font-weight:700;
-    font-size:.78rem;letter-spacing:.16em;color:var(--teal);
-    margin:22px 0 4px;
+    font-size:.78rem;letter-spacing:.16em;color:var(--teal);margin:22px 0 4px;
   }
   .muted{color:var(--muted);}
   .small{font-size:.86rem;}
+  .note-hand{font-family:var(--hand);color:var(--text);font-size:.97rem;line-height:1.85;}
 
   .card{
     background:var(--paper);border:1px solid var(--border);
@@ -172,10 +165,18 @@
     box-shadow:0 6px 20px rgba(28,58,94,.05);
   }
   .card h3{margin:0 0 6px;font-size:1rem;color:var(--ink);}
-  .card p{margin:0;color:var(--text);font-size:.93rem;}
+  .card p{margin:0;color:var(--text);font-size:.95rem;}
 
   ul.plain{padding-left:1.1em;margin:6px 0 0;}
   ul.plain li{margin:7px 0;}
+
+  .btn-pdf{
+    display:inline-flex;align-items:center;gap:9px;margin:14px 0 4px;
+    padding:12px 24px;border-radius:999px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-family:var(--serif);font-weight:700;letter-spacing:.1em;font-size:.9rem;
+  }
+  .btn-pdf:active{opacity:.85;}
 
   .divider{
     width:70px;height:2px;margin:34px auto 0;
@@ -188,6 +189,7 @@
   }
 
   /* ===== CAREER タイムライン ===== */
+  .origin{text-align:center;font-family:var(--hand);color:var(--muted);margin:0 0 22px;}
   .timeline{margin:8px 0 0;padding:0;list-style:none;}
   .timeline li{position:relative;padding:0 0 22px 24px;border-left:2px solid var(--border);}
   .timeline li:last-child{border-left-color:transparent;padding-bottom:0;}
@@ -197,19 +199,40 @@
     background:#fff;border:3px solid var(--teal);
   }
   .timeline .year{font-family:var(--serif);font-weight:700;font-size:.85rem;color:var(--teal);letter-spacing:.06em;}
-  .timeline .role{font-weight:700;color:var(--ink);margin:2px 0;font-size:.96rem;}
-  .timeline .note{font-size:.88rem;color:var(--muted);}
+  .timeline .role{font-weight:700;color:var(--ink);margin:2px 0;font-size:.95rem;}
+  .timeline .note{font-size:.87rem;color:var(--muted);}
 
   /* ===== ACHIEVEMENTS ===== */
-  .ach{margin:20px 0 0;}
+  .ach{margin:22px 0 0;}
   .ach h3{
     font-family:var(--serif);font-weight:700;font-size:.85rem;letter-spacing:.14em;
     color:var(--ink);border-bottom:1.5px solid var(--border);
     padding-bottom:7px;margin:0 0 12px;
   }
-  .ach ol{margin:0;padding-left:1.25em;}
-  .ach li{margin:0 0 12px;font-size:.92rem;}
-  .ach li .meta{display:block;color:var(--muted);font-size:.84rem;margin-top:2px;}
+  .ach ol,.ach ul{margin:0;padding-left:1.25em;}
+  .ach li{margin:0 0 14px;font-size:.9rem;line-height:1.8;}
+  .ach li .meta{display:block;color:var(--muted);font-size:.83rem;margin-top:2px;}
+  .ach li .award{display:block;color:var(--teal);font-size:.83rem;font-weight:700;margin-top:2px;}
+
+  /* ===== ABOUT ===== */
+  .about-list{margin:0;padding:0;list-style:none;}
+  .about-list li{margin:0 0 14px;}
+  .about-list .k{font-family:var(--serif);font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--teal);}
+  .about-list .v{color:var(--text);font-size:.95rem;}
+  .pet{
+    margin:18px 0 0;text-align:center;
+  }
+  .pet img{
+    width:100%;max-width:280px;margin:0 auto;
+    border-radius:var(--radius);border:1px solid var(--border);
+    box-shadow:0 6px 20px rgba(28,58,94,.06);
+  }
+  .pet figcaption{font-family:var(--hand);color:var(--muted);font-size:.9rem;margin-top:8px;}
+  .todo{
+    display:block;margin:12px auto 0;max-width:280px;padding:24px 16px;
+    background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);
+    color:var(--muted);font-size:.85rem;text-align:center;
+  }
 
   /* ===== LINKS ===== */
   .links{display:flex;flex-direction:column;gap:11px;margin:6px 0 0;}
@@ -218,9 +241,9 @@
     padding:15px 18px;background:var(--paper);
     border:1px solid var(--border);border-radius:var(--radius);
     text-decoration:none;color:var(--ink);font-weight:700;font-size:.94rem;
-    box-shadow:0 4px 14px rgba(28,58,94,.04);transition:border-color .2s,transform .2s;
+    box-shadow:0 4px 14px rgba(28,58,94,.04);
   }
-  .links a:active{transform:scale(.99);}
+  .links a[aria-disabled="true"]{color:var(--muted);pointer-events:none;}
   .links a .ico{width:24px;text-align:center;flex:none;font-size:1.05rem;}
   .links a .arrow{margin-left:auto;color:var(--teal);font-family:var(--serif);}
 
@@ -237,14 +260,15 @@
 <header class="hero" id="profile">
   <p class="kicker">Researcher</p>
   <div class="photo-frame">
-    <img src="photo.jpg" alt="【氏名】の顔写真" onerror="this.style.visibility='hidden'">
+    <!-- TODO: 顔写真を photo.jpg として配置（正方形推奨） -->
+    <img src="photo.jpg" alt="緒方穂波の顔写真" onerror="this.style.visibility='hidden'">
   </div>
-  <h1>【氏名】</h1>
-  <p class="reading">【Name in Romaji】</p>
-  <p class="affil">【所属大学・研究科】</p>
-  <p class="affil sub">【研究室名】／【職位・学年（例：博士後期課程2年）】</p>
-  <span class="field">【研究分野（例：分子生物学）】</span>
-  <p class="tagline">【一言プロフィール。何を目指してどんな研究をしているかを1〜2文で。】</p>
+  <h1>緒方 穂波</h1>
+  <p class="reading">Honami Ogata</p>
+  <p class="affil">宮崎大学 医学獣医学総合研究科 博士課程1年</p>
+  <p class="affil sub">フロンティア科学総合研究センター 生物資源分野（2026年4月入学）</p>
+  <span class="field">実験動物学・動物行動学</span>
+  <p class="tagline">齧歯類の超音波発声の役割や種差について研究しています。</p>
 </header>
 
 <div class="tape"></div>
@@ -256,7 +280,6 @@
     <li><a href="#research">RESEARCH</a></li>
     <li><a href="#career">CAREER</a></li>
     <li><a href="#achievements">ACHIEVEMENTS</a></li>
-    <li><a href="#message">MESSAGE</a></li>
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#links">LINKS</a></li>
   </ul>
@@ -270,32 +293,32 @@
     <div class="head">
       <p class="script">My Research</p>
       <span class="ribbon">RESEARCH</span>
-      <p class="sub">いま取り組んでいること、これから確かめたいこと。</p>
+      <p class="sub">現在の研究</p>
     </div>
-
-    <p class="lead">【研究を一言で表すキャッチコピー。専門外の人が読んでも情景が浮かぶくらいに。】</p>
 
     <div class="card">
-      <h3>現在の研究テーマ</h3>
-      <p>【研究テーマのタイトル】</p>
+      <h3>研究テーマ</h3>
+      <p>系統的近縁種における超音波発声を介した配偶者選択と種間生殖隔離の比較解析</p>
     </div>
 
-    <span class="label">STUDY SUBJECT ／ 研究対象</span>
-    <p class="muted">【何を対象にしているか（生物種・現象・材料・データなど）】</p>
-
-    <span class="label">OVERVIEW ／ 研究内容</span>
-    <p class="muted">【専門外の研究者が読んでも大まかに分かる説明を3〜5文で。背景 → 問い → アプローチ → 何が分かると嬉しいか。】</p>
-
-    <span class="label">NEXT ／ 今後興味のあるテーマ</span>
-    <ul class="plain muted">
-      <li>【今後やってみたい研究・発展の方向性 ①】</li>
-      <li>【② 】</li>
-    </ul>
-
-    <p class="small" style="margin-top:16px;">
-      <a href="404.html">▸ 学会ポスター／発表資料を見る（PDF）</a>
-      <span class="muted">※ 公開できるものがあれば</span>
+    <p class="note-hand">
+      齧歯類を対象に、超音波発声（USV）を切り口として、
+      配偶者選択や種間の生殖隔離のしくみを比較しています。
     </p>
+
+    <!-- TODO: 学会ポスターPDFのファイル/URLが未確定。
+         プロジェクト内に該当ファイルは見つかりませんでした。
+         PDFを用意したら poster.pdf として配置するか、href を正式URLに差し替えてください。 -->
+    <a class="btn-pdf" href="poster.pdf" target="_blank" rel="noopener">
+      <span>▸</span> 学会ポスターを見る（PDF）
+    </a>
+
+    <p class="note-hand" style="margin-top:22px;">
+      哺乳類全般の種差やその背景に興味があります。
+      現在は齧歯類を対象に、超音波発声（USV）を切り口に研究をしていますが、
+      対象の動物も切り口も増やしていきたいと考えています。
+    </p>
+
     <hr class="divider">
   </div>
 </section>
@@ -306,31 +329,29 @@
     <div class="head">
       <p class="script">My Path</p>
       <span class="ribbon">CAREER</span>
-      <p class="sub">高校から現在までの歩み。</p>
+      <p class="sub">大学以降の歩み</p>
     </div>
+
+    <p class="origin">熊本県出身</p>
 
     <ul class="timeline">
       <li>
-        <div class="year">【20XX】</div>
-        <div class="role">【◯◯高等学校 卒業】</div>
-        <div class="note">【必要なら一言】</div>
+        <div class="year">2015.04 – 2019.03</div>
+        <div class="role">宮崎大学 農学部 畜産草地科学科</div>
+        <div class="note">2015年4月 入学 ／ 2019年3月 卒業</div>
       </li>
       <li>
-        <div class="year">【20XX】</div>
-        <div class="role">【◯◯大学 ◯◯学部 ◯◯学科 卒業】</div>
-        <div class="note">【専攻・卒業研究テーマなど】</div>
+        <div class="year">2019.04 – 2021.03</div>
+        <div class="role">九州大学大学院 修士課程</div>
+        <div class="note">生物資源環境科学府 資源生物科学専攻 ／ 2021年3月 修了</div>
       </li>
       <li>
-        <div class="year">【20XX】</div>
-        <div class="role">【◯◯大学大学院 ◯◯研究科 修士課程 修了】</div>
-        <div class="note">【研究内容】</div>
-      </li>
-      <li>
-        <div class="year">【20XX–現在】</div>
-        <div class="role">【◯◯大学大学院 ◯◯研究科 博士後期課程】</div>
-        <div class="note">【◯◯研究室／指導教員：◯◯先生】</div>
+        <div class="year">2026.04 –</div>
+        <div class="role">宮崎大学大学院 医学獣医学総合研究科 博士課程</div>
+        <div class="note">医学獣医学専攻 ／ フロンティア科学総合研究センター 生物資源分野（現在 博士課程1年）</div>
       </li>
     </ul>
+
     <hr class="divider">
   </div>
 </section>
@@ -341,54 +362,61 @@
     <div class="head">
       <p class="script">My Work</p>
       <span class="ribbon">ACHIEVEMENTS</span>
-      <p class="sub">論文・学会発表・その他の実績。</p>
+      <p class="sub">論文・発表・資格</p>
     </div>
 
     <div class="ach">
-      <h3>PUBLICATIONS ／ 論文</h3>
+      <h3>PAPERS ／ 論文（査読あり）</h3>
       <ol>
         <li>
-          【著者名（自分を含む全員）】. 「【論文タイトル】」.
-          <span class="meta">【掲載誌名】, 【巻(号)】, 【ページ】, 【年】. DOI: 【10.xxxx/xxxxx】</span>
+          Ogata, H., Tsukamoto, M., Yamashita, K., Iwamori, T., Takahashi, H., Kaneko, T., Iwamori, N., Inai, T., Iida, H.
+          Effects of Calyculin A on the Motility and Protein Phosphorylation in Frozen-Thawed Bull Spermatozoa.
+          <span class="meta">Zoological Science 38(6):531-543. 2021.</span>
         </li>
       </ol>
     </div>
 
     <div class="ach">
-      <h3>PRESENTATIONS ／ 学会発表</h3>
+      <h3>PAPERS ／ 論文（査読なし）</h3>
       <ol>
         <li>
-          【発表者名】. 「【発表タイトル】」.
-          <span class="meta">【学会名】, 【開催地】, 【年月】.（口頭／ポスター）</span>
+          緒方穂波, 前山賢太, 林扶充, 仮屋博敬, 川辺敏晃, 名倉悟郎, 城ヶ原貴通, 篠原明男, 越本知大.
+          希少固有種アマミトゲネズミの実験動物化に向けた飼育ストレス評価の試み.
+          <span class="meta">九州実験動物雑誌 35：59-62. 2019.（2018年度 九州実験動物研究会 山内半田賞受賞講演寄稿）</span>
         </li>
       </ol>
     </div>
 
     <div class="ach">
-      <h3>OTHERS ／ その他</h3>
+      <h3>THESIS ／ 卒業論文</h3>
+      <ol>
+        <li>
+          緒方穂波.
+          絶滅危惧種アマミトゲネズミ（Tokudaia osimensis）の飼育下におけるストレスと繁殖行動の評価.
+          <span class="meta">宮崎大学農学部畜産草地科学科卒業論文. 2019.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ach">
+      <h3>PRESENTATIONS ／ 学会発表・受賞</h3>
+      <ol>
+        <li>
+          緒方穂波, 前山賢太, 林扶充子, 仮屋博敬, 川辺敏晃, 名倉悟郎, 城ヶ原貴通, 篠原明男, 越本知大.
+          希少固有種アマミトゲネズミの実験動物化に向けた飼育ストレス評価の試み.
+          <span class="meta">第14回（2018年度）九州実験動物研究会, 2018.11.18（大分）.</span>
+          <span class="award">山内・半田賞 受賞</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ach">
+      <h3>CERTIFICATION ／ 資格</h3>
       <ul class="plain">
-        <li class="small">【受賞歴：◯◯賞（20XX）】</li>
-        <li class="small">【著書・分担執筆：書名, 出版社, 担当章, 年】</li>
-        <li class="small">【競争的資金・フェローシップなど】</li>
+        <li>1級実験動物技術者</li>
       </ul>
     </div>
-    <hr class="divider">
-  </div>
-</section>
 
-<!-- ============ MESSAGE ============ -->
-<section id="message">
-  <div class="wrap">
-    <div class="head">
-      <p class="script">Looking Ahead</p>
-      <span class="ribbon">MESSAGE</span>
-      <p class="sub">これからの研究への思い。</p>
-    </div>
-    <p class="lead" style="text-align:center;">
-      【研究者としての意気込みを短く。<br>
-      現在の研究を通じて何を明らかにしたいか／今後どんな研究をしていきたいか／<br>
-      どんな研究者を目指しているか を3〜5文で。】
-    </p>
     <hr class="divider">
   </div>
 </section>
@@ -399,17 +427,35 @@
     <div class="head">
       <p class="script">Off Duty</p>
       <span class="ribbon">ABOUT</span>
-      <p class="sub">研究のほかの、わたし。</p>
+      <p class="sub">研究のほかの、わたし</p>
     </div>
+
     <div class="card">
-      <p class="muted" style="line-height:2;">
-        趣味：【　】<br>
-        好きな動物：【　】<br>
-        ペット：【　】<br>
-        最近はまっていること：【　】
-      </p>
+      <ul class="about-list">
+        <li>
+          <div class="k">HOBBY ／ 趣味</div>
+          <div class="v">バレーボール ／ ドライブ</div>
+        </li>
+        <li>
+          <div class="k">FAVORITE ／ 好きな動物</div>
+          <div class="v">哺乳類全般（特に齧歯類と猫）</div>
+        </li>
+        <li>
+          <div class="k">PET ／ ペット</div>
+          <div class="v">チンチラ「コロちゃん」（11歳）</div>
+        </li>
+      </ul>
+
+      <figure class="pet">
+        <!-- TODO: コロちゃんの写真が未提供。プロジェクト内に該当画像は見つかりませんでした。
+             写真を用意したら koro.jpg として配置してください。画像がない間は下のプレースホルダーを表示します。 -->
+        <img src="koro.jpg" alt="ペットのチンチラ「コロちゃん」"
+             onerror="this.style.display='none';this.nextElementSibling.hidden=false;">
+        <span class="todo" hidden>コロちゃんの写真（準備中）</span>
+        <figcaption>チンチラのコロちゃん（11歳）</figcaption>
+      </figure>
     </div>
-    <p class="small muted" style="text-align:center;">【会話のきっかけになりそうな一言。】</p>
+
     <hr class="divider">
   </div>
 </section>
@@ -420,17 +466,17 @@
     <div class="head">
       <p class="script">Keep in Touch</p>
       <span class="ribbon">LINKS</span>
-      <p class="sub">学会のあとも、ここから。</p>
+      <p class="sub">学会のあとも、ここから</p>
     </div>
+
+    <!-- TODO: 各リンクは未確定。メール・researchmap・SNS 等、公開してよいものが決まったら
+         href を実URLに差し替え、aria-disabled 属性を削除してください。不要な行は削除。 -->
     <div class="links">
-      <a href="mailto:【address@example.ac.jp】"><span class="ico">✉</span>Email<span class="arrow">→</span></a>
-      <a href="【https://lab.example.ac.jp】" target="_blank" rel="noopener"><span class="ico">🏛</span>所属研究室ページ<span class="arrow">→</span></a>
-      <a href="【https://researchmap.jp/id】" target="_blank" rel="noopener"><span class="ico">🗂</span>researchmap<span class="arrow">→</span></a>
-      <a href="【https://scholar.google.com/citations?user=id】" target="_blank" rel="noopener"><span class="ico">🎓</span>Google Scholar<span class="arrow">→</span></a>
-      <a href="【https://orcid.org/0000-0000-0000-0000】" target="_blank" rel="noopener"><span class="ico">🆔</span>ORCID<span class="arrow">→</span></a>
-      <a href="【https://x.com/id】" target="_blank" rel="noopener"><span class="ico">𝕏</span>X (Twitter)<span class="arrow">→</span></a>
+      <a href="#" aria-disabled="true"><span class="ico">✉</span>Email（準備中）<span class="arrow">→</span></a>
+      <a href="#" aria-disabled="true"><span class="ico">🏛</span>所属研究室ページ（準備中）<span class="arrow">→</span></a>
+      <a href="#" aria-disabled="true"><span class="ico">🗂</span>researchmap（準備中）<span class="arrow">→</span></a>
     </div>
-    <p class="small muted" style="margin-top:14px;text-align:center;">※ 実在するものだけ残し、不要な行は削除してください。</p>
+    <p class="small muted" style="margin-top:14px;text-align:center;">各種リンクは準備中です。</p>
   </div>
 </section>
 
@@ -438,7 +484,7 @@
 
 <div class="tape thin"></div>
 <footer>
-  © <span id="year"></span> 【氏名】 &nbsp;·&nbsp; Last updated 【2026.09】
+  © <span id="year"></span> Honami Ogata
 </footer>
 
 <script>
