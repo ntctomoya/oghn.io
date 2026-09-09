@@ -76,15 +76,26 @@
     font-family:var(--script);font-size:1.9rem;color:var(--teal);
     line-height:1;margin:0 0 18px;
   }
-  .photo-frame{
-    width:150px;height:150px;margin:0 auto 20px;
-    border-radius:50%;padding:6px;
+  .gallery{
+    width:264px;max-width:76vw;margin:0 auto 12px;padding:6px;
+    border-radius:26px;
     background:conic-gradient(from 210deg,var(--teal),var(--green),var(--coral),var(--teal));
   }
-  .photo-frame img{
-    width:100%;height:100%;border-radius:50%;object-fit:cover;
-    border:4px solid #fff;background:var(--surface);
+  .gallery-track{
+    display:flex;gap:0;border-radius:20px;overflow-x:auto;background:var(--surface);
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
   }
+  .gallery-track::-webkit-scrollbar{display:none;}
+  .gallery-track img{
+    flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:cover;
+    scroll-snap-align:center;
+  }
+  .dots{display:flex;justify-content:center;gap:6px;margin:0 0 18px;}
+  .dots .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--border);
+    transition:background .25s,width .25s;
+  }
+  .dots .dot.active{background:var(--teal);width:18px;}
   .hero h1{
     font-family:var(--jp);font-weight:700;
     font-size:1.7rem;margin:0 0 4px;color:var(--ink);letter-spacing:.06em;
@@ -259,9 +270,15 @@
 <!-- ============ HERO / PROFILE ============ -->
 <header class="hero" id="profile">
   <p class="kicker">Researcher</p>
-  <div class="photo-frame">
-    <!-- TODO: 顔写真を photo.jpg として配置（正方形推奨） -->
-    <img src="photo.jpg" alt="緒方穂波の顔写真" onerror="this.style.visibility='hidden'">
+  <div class="gallery">
+    <div class="gallery-track" id="gtrack">
+      <img src="img/profile_01.jpg" alt="緒方穂波 プロフィール写真 1" loading="eager">
+      <img src="img/profile_02.jpg" alt="緒方穂波 プロフィール写真 2" loading="lazy">
+      <img src="img/profile_03.jpg" alt="緒方穂波 プロフィール写真 3" loading="lazy">
+    </div>
+  </div>
+  <div class="dots" id="gdots" aria-hidden="true">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
   </div>
   <h1>緒方 穂波</h1>
   <p class="reading">Honami Ogata</p>
@@ -447,9 +464,7 @@
       </ul>
 
       <figure class="pet">
-        <!-- TODO: コロちゃんの写真が未提供。プロジェクト内に該当画像は見つかりませんでした。
-             写真を用意したら koro.jpg として配置してください。画像がない間は下のプレースホルダーを表示します。 -->
-        <img src="koro.jpg" alt="ペットのチンチラ「コロちゃん」"
+        <img src="img/chinchilla_01.jpg" alt="ペットのチンチラ「コロちゃん」" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.hidden=false;">
         <span class="todo" hidden>コロちゃんの写真（準備中）</span>
         <figcaption>チンチラのコロちゃん（11歳）</figcaption>
@@ -489,6 +504,21 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // プロフィール写真カルーセル：スクロール位置をドットに同期
+  (function(){
+    const track = document.getElementById('gtrack');
+    const dots = [...document.querySelectorAll('#gdots .dot')];
+    if(!track) return;
+    let raf;
+    track.addEventListener('scroll', ()=>{
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(()=>{
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach((d,n)=>d.classList.toggle('active', n===i));
+      });
+    }, {passive:true});
+  })();
 
   const links = [...document.querySelectorAll('nav a')];
   const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
