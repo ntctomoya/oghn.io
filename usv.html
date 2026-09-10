@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ハムスターのおしゃべり｜緒方 穂波</title>
+<meta name="description" content="齧歯類の超音波発声（USV）。通常撮影と、超音波を可聴化した音声を聴き比べられます。">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffff;--sky:#eef6fc;--sky-soft:#f6fafd;--line:#d9e7f1;
+    --blue:#1f6fb2;--blue-dark:#155a92;--sky-accent:#4aa3d6;
+    --ink:#232b32;--text:#3d474f;--muted:#6a757e;
+    --radius:12px;--maxw:900px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;
+    line-height:1.85;font-size:16px;-webkit-text-size-adjust:100%;
+  }
+  a{color:var(--blue);}
+  img,video{max-width:100%;display:block;}
+
+  header{
+    background:var(--sky);text-align:center;padding:30px 20px 26px;
+  }
+  header .en{font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--sky-accent);margin:0 0 6px;}
+  header h1{font-size:1.3rem;margin:0 0 8px;color:var(--ink);}
+  header p{margin:0;color:var(--muted);font-size:.92rem;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 20px 40px;}
+
+  .videos{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  }
+  @media (max-width:640px){
+    .videos{grid-template-columns:1fr;}
+  }
+
+  .vcard{
+    background:var(--sky-soft);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;
+  }
+  .vcard h2{
+    margin:0;padding:12px 16px;font-size:.95rem;color:var(--blue-dark);
+    border-bottom:1px solid var(--line);
+  }
+  .player{
+    position:relative;background:#000;aspect-ratio:9/16;
+  }
+  .player video{width:100%;height:100%;object-fit:contain;background:#000;}
+  .play-btn{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    border:none;background:rgba(0,0,0,.25);cursor:pointer;
+  }
+  .play-btn::before{
+    content:"";width:78px;height:78px;border-radius:50%;
+    background:var(--blue);
+    box-shadow:0 6px 24px rgba(0,0,0,.35);
+  }
+  .play-btn::after{
+    content:"";position:absolute;
+    border-style:solid;border-width:17px 0 17px 28px;
+    border-color:transparent transparent transparent #fff;
+    margin-left:7px;
+  }
+  .play-btn[hidden]{display:none;}
+  .vcard p.note{margin:0;padding:11px 16px;font-size:.85rem;color:var(--muted);}
+
+  .todo{
+    margin:0;padding:40px 16px;text-align:center;color:var(--muted);font-size:.85rem;
+    background:var(--sky);
+  }
+
+  .back{
+    display:inline-block;margin-top:28px;
+    font-weight:700;font-size:.9rem;color:var(--blue);text-decoration:none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="en">ULTRASONIC VOCALIZATION</p>
+  <h1>ハムスターのおしゃべりをお聴きください</h1>
+  <p>通常の音声と、超音波を可聴化した音声を聴き比べられます。</p>
+</header>
+
+<div class="wrap">
+  <div class="videos">
+
+    <!-- 1つ目：通常撮影 -->
+    <div class="vcard">
+      <h2>① 通常撮影</h2>
+      <div class="player">
+        <!-- TODO: 通常撮影の動画を video/usv_normal.mp4 として配置。
+             縦動画を想定（aspect-ratio 9/16）。必要ならポスター画像も poster 属性で指定。 -->
+        <video id="v1" preload="metadata" playsinline controls
+               onerror="this.closest('.player').innerHTML='<p class=todo>動画（準備中）：video/usv_normal.mp4</p>';">
+          <source src="video/usv_normal.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" type="button" aria-label="再生" data-target="v1"></button>
+      </div>
+      <p class="note">実際に聞こえる声。ヒトの耳では多くの発声が聞き取れません。</p>
+    </div>
+
+    <!-- 2つ目：超音波を可聴化 -->
+    <div class="vcard">
+      <h2>② 超音波を可聴化</h2>
+      <div class="player">
+        <!-- TODO: 超音波を可聴化した動画を video/usv_audible.mp4 として配置。 -->
+        <video id="v2" preload="metadata" playsinline controls
+               onerror="this.closest('.player').innerHTML='<p class=todo>動画（準備中）：video/usv_audible.mp4</p>';">
+          <source src="video/usv_audible.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" type="button" aria-label="再生" data-target="v2"></button>
+      </div>
+      <p class="note">超音波（USV）を可聴域に変換したもの。さかんに「おしゃべり」しています。</p>
+    </div>
+
+  </div>
+
+  <a class="back" href="./">← プロフィールへ戻る</a>
+</div>
+
+<script>
+  document.querySelectorAll('.play-btn').forEach(function(btn){
+    var v = document.getElementById(btn.dataset.target);
+    if(!v) return;
+    btn.addEventListener('click', function(){ v.play(); });
+    v.addEventListener('play',  function(){ btn.hidden = true;  });
+    v.addEventListener('pause', function(){ btn.hidden = false; });
+    v.addEventListener('ended', function(){ btn.hidden = false; });
+  });
+</script>
+
+</body>
+</html>

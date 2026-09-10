@@ -133,8 +133,9 @@
   ul.plain{padding-left:1.1em;margin:6px 0 0;}
   ul.plain li{margin:6px 0;}
 
+  .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px;}
   .btn-pdf{
-    display:inline-flex;align-items:center;gap:8px;margin:12px 0 4px;
+    display:inline-flex;align-items:center;gap:8px;
     padding:11px 22px;border-radius:999px;
     background:var(--blue);color:#fff;text-decoration:none;
     font-weight:700;font-size:.9rem;
@@ -208,16 +209,18 @@
     <div class="gallery-track" id="gtrack">
       <img src="img/profile_01.jpg" alt="緒方穂波 プロフィール写真 1">
       <img src="img/profile_02.jpg" alt="緒方穂波 プロフィール写真 2" loading="lazy">
+      <img src="img/profile_03.jpg" alt="緒方穂波 プロフィール写真 3" loading="lazy">
     </div>
   </div>
   <div class="dots" id="gdots" aria-hidden="true">
-    <span class="dot active"></span><span class="dot"></span>
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
   </div>
 
   <h1>緒方 穂波</h1>
   <p class="reading">Honami Ogata</p>
   <p class="affil">宮崎大学 医学獣医学総合研究科 博士課程1年</p>
-  <p class="affil sub">フロンティア科学総合研究センター 生物資源分野（2026年4月入学）</p>
+  <p class="affil sub">フロンティア科学総合研究センター 生物資源分野</p>
+  <p class="affil sub">（2026年4月入学）</p>
   <span class="field">実験動物学・動物行動学</span>
   <p class="tagline">齧歯類の超音波発声の役割や種差について研究しています。</p>
 </header>
@@ -254,12 +257,14 @@
       配偶者選択や種間の生殖隔離のしくみを比較しています。
     </p>
 
-    <!-- TODO: 学会ポスターPDFのファイル/URLが未確定。
-         プロジェクト内に該当ファイルは見つかりませんでした。
-         PDFを用意したら poster.pdf として配置するか、href を正式URLに差し替えてください。 -->
-    <a class="btn-pdf" href="poster.pdf" target="_blank" rel="noopener">
-      <span>▸</span> 学会ポスターを見る（PDF）
-    </a>
+    <div class="btn-row">
+      <a class="btn-pdf" href="pdf/poster.pdf" target="_blank" rel="noopener">
+        <span>▸</span> 学会ポスターを見る（PDF）
+      </a>
+      <a class="btn-pdf" href="usv.html">
+        <span>▸</span> 超音波発声（USV）を聴く
+      </a>
+    </div>
 
     <p class="body muted" style="margin-top:18px;">
       哺乳類全般の種差やその背景に興味があります。
@@ -366,7 +371,7 @@
   <div class="wrap">
     <div class="head">
       <span class="en">ABOUT</span>
-      <h2>人となり</h2>
+      <h2>自己紹介</h2>
     </div>
 
     <div class="card">
@@ -404,11 +409,11 @@
     <!-- TODO: 各リンクは未確定。メール・researchmap・SNS 等、公開してよいものが決まったら
          href を実URLに差し替え、aria-disabled 属性を削除してください。不要な行は削除。 -->
     <div class="links">
+      <a href="http://www.med.miyazaki-u.ac.jp/AnimalCenter/" target="_blank" rel="noopener"><span class="ico">🏛</span>所属研究室ページ<span class="arrow">→</span></a>
       <a href="#" aria-disabled="true"><span class="ico">✉</span>Email（準備中）<span class="arrow">→</span></a>
-      <a href="#" aria-disabled="true"><span class="ico">🏛</span>所属研究室ページ（準備中）<span class="arrow">→</span></a>
       <a href="#" aria-disabled="true"><span class="ico">🗂</span>researchmap（準備中）<span class="arrow">→</span></a>
     </div>
-    <p class="small muted" style="margin-top:12px;">各種リンクは準備中です。</p>
+    <p class="small muted" style="margin-top:12px;">一部リンクは準備中です。</p>
   </div>
 </section>
 
