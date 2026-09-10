@@ -5,64 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>準備中｜緒方 穂波</title>
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Parisienne&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Kurenaido&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme:light;
-    --bg:#ffffff;--paper:#fbfaf6;--border:#e9e4d8;
-    --ink:#1c3a5e;--text:#3a3f45;--muted:#7b8189;--teal:#3f9d9b;--green:#7fa84f;
-    --serif:"Cormorant Garamond",serif;
-    --script:"Parisienne",cursive;
-    --jp:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
-    --hand:"Zen Kurenaido","Zen Kaku Gothic New",sans-serif;
+    --bg:#ffffff;--sky:#eef6fc;--line:#d9e7f1;
+    --blue:#1f6fb2;--blue-dark:#155a92;--sky-accent:#4aa3d6;
+    --ink:#232b32;--muted:#6a757e;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;min-height:100vh;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:radial-gradient(120% 80% at 50% 0%,var(--paper),#fff 70%);
-    color:var(--text);font-family:var(--jp);line-height:1.9;
-    text-align:center;padding:40px 24px;
+    background:var(--sky);color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;
+    line-height:1.85;text-align:center;padding:40px 24px;
   }
-  .tape{
-    position:fixed;left:0;right:0;height:12px;
-    background:repeating-linear-gradient(90deg,var(--green) 0 10px,transparent 10px 20px),var(--teal);
-    opacity:.8;
-  }
-  .tape.top{top:0;} .tape.bottom{bottom:0;}
-  .script{font-family:var(--script);font-size:2.1rem;color:var(--teal);margin:0 0 6px;line-height:1;}
-  .code{font-family:var(--serif);font-weight:700;letter-spacing:.3em;color:var(--border);font-size:1rem;margin:0 0 22px;}
-  h1{font-weight:700;color:var(--ink);font-size:1.35rem;letter-spacing:.08em;margin:0 0 14px;}
-  p{font-family:var(--hand);color:var(--muted);font-size:1rem;max-width:22em;margin:0 auto 30px;}
+  .en{font-size:.75rem;font-weight:700;letter-spacing:.18em;color:var(--sky-accent);margin:0 0 8px;}
+  h1{font-weight:700;color:var(--ink);font-size:1.25rem;margin:0 0 12px;}
+  p{font-size:.95rem;max-width:22em;margin:0 auto 26px;}
   .home{
-    display:inline-block;text-decoration:none;border:none;cursor:pointer;
-    font-family:var(--serif);font-weight:700;letter-spacing:.16em;font-size:.9rem;
-    color:#fff;background:var(--ink);padding:13px 30px;border-radius:999px;
+    display:inline-block;border:none;cursor:pointer;
+    font-weight:700;letter-spacing:.06em;font-size:.9rem;
+    color:#fff;background:var(--blue);padding:12px 28px;border-radius:999px;
   }
-  .home:active{opacity:.85;}
+  .home:active{background:var(--blue-dark);}
+  #fallback{font-size:.82rem;margin-top:14px;}
 </style>
 </head>
 <body>
-  <div class="tape top"></div>
-
-  <p class="script">Coming soon</p>
-  <p class="code">UNDER CONSTRUCTION</p>
+  <p class="en">UNDER CONSTRUCTION</p>
   <h1>このページは準備中です</h1>
   <p>お探しの情報はただいま準備しています。<br>このタブを閉じてお戻りください。</p>
   <button class="home" type="button" onclick="window.close()">▸ このタブを閉じる</button>
-  <p id="fallback" hidden style="font-size:.82rem;margin-top:14px;">
-    閉じられない場合は、ブラウザのタブを手動で閉じてください。
-  </p>
+  <p id="fallback" hidden>閉じられない場合は、ブラウザのタブを手動で閉じてください。</p>
   <script>
-    // window.close() はスクリプト/リンクで開かれたタブのみ有効。
-    // 閉じられなかった場合に案内を表示。
     document.querySelector('button.home').addEventListener('click', function(){
       setTimeout(function(){ document.getElementById('fallback').hidden = false; }, 300);
     });
   </script>
-
-  <div class="tape bottom"></div>
 </body>
 </html>
