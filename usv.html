@@ -48,7 +48,7 @@
     border-bottom:1px solid var(--line);
   }
   .player{
-    position:relative;background:#000;aspect-ratio:9/16;
+    position:relative;background:#000;aspect-ratio:9/16; /* 動画の実サイズ判明後にJSで上書き */
   }
   .player video{width:100%;height:100%;object-fit:contain;background:#000;}
   .play-btn{
@@ -101,7 +101,7 @@
       <h2>① 通常撮影</h2>
       <div class="player">
         <!-- TODO: 通常撮影の動画を video/usv_normal.mp4 として配置。
-             縦動画を想定（aspect-ratio 9/16）。必要ならポスター画像も poster 属性で指定。 -->
+             再生枠は動画の実サイズに応じてJSが自動調整。必要ならポスター画像も poster 属性で指定。 -->
         <video id="v1" preload="metadata" playsinline controls
                onerror="this.closest('.player').innerHTML='<p class=todo>動画（準備中）：video/usv_normal.mp4</p>';">
           <source src="video/usv_normal.mp4" type="video/mp4">
@@ -141,6 +141,17 @@
     v.addEventListener('play',  function(){ btn.hidden = true;  });
     v.addEventListener('pause', function(){ btn.hidden = false; });
     v.addEventListener('ended', function(){ btn.hidden = false; });
+  });
+
+  // 動画の実際の縦横比に合わせて再生枠のサイズを決定する
+  document.querySelectorAll('.player video').forEach(function(v){
+    function applyRatio(){
+      if(v.videoWidth && v.videoHeight){
+        v.closest('.player').style.aspectRatio = v.videoWidth + '/' + v.videoHeight;
+      }
+    }
+    v.addEventListener('loadedmetadata', applyRatio);
+    if(v.readyState >= 1) applyRatio();
   });
 </script>
 
